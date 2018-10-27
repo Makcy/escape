@@ -69,7 +69,7 @@ cc.Class({
 
     //更新移动目标
     update: function(dt)
-    {
+    { 
         switch (this._joyCom.directionType)
         {
             case Common.DirectionType.ALL:   
