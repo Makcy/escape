@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.32850790678734304,
-      "y": 0.32850790678734304,
+      "x": 0.32470703125,
+      "y": 0.32470703125,
       "z": 1
     },
     "_quat": {
@@ -79,7 +79,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 16
       }
     ],
     "_prefab": null,
@@ -522,6 +522,9 @@
       },
       {
         "__id__": 14
+      },
+      {
+        "__id__": 15
       }
     ],
     "_prefab": null,
@@ -617,6 +620,18 @@
     ],
     "playOnLoad": true,
     "_id": "3dOFEMA59HjJNGYv99wGxR"
+  },
+  {
+    "__type__": "5f115xLMHdN3LprIynxhLWE",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 12
+    },
+    "_enabled": true,
+    "prePosition": null,
+    "isPlayingFrontAnim": false,
+    "_id": "83gFdoyo9KmYl1ygkIsIEO"
   },
   {
     "__type__": "cc.Canvas",
