@@ -6,8 +6,7 @@ cc.Class({
 
     properties: {
         prePosition: {
-            type: cc.Vec2,
-            default: null
+            default: new cc.Vec2()
         },
         animCtrl: {
             type: cc.Animation,

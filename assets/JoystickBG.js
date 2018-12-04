@@ -32,7 +32,7 @@ cc.Class({
     },
 
 
-    _speed: 0,          //实际速度
+    _speed: 20,          //实际速度
     _speed1: 1,         //一段速度
     _speed2: 2,         //二段速度
     _opacity: 0,        //透明度
@@ -116,17 +116,18 @@ cc.Class({
   _setSpeed: function(point)
   {
     //触摸点和遥控杆中心的距离
-    var distance = this._getDistance(point, this.node.getPosition());
+    // var distance = this._getDistance(point, this.node.getPosition());
 
-    //如果半径
-    if(distance < this._radius)
-    {
-      this._speed = this._speed1;
-    }
-    else
-    {
-      this._speed = this._speed2;
-    }
+    // //如果半径
+    // if(distance < this._radius)
+    // {
+    //   this._speed = this._speed1;
+    // }
+    // else
+    // {
+    //   this._speed = this._speed2;
+    // }
+    this._speed = 3;
   },
 
   _touchStartEvent: function(event) {
@@ -171,7 +172,6 @@ cc.Class({
     this._getAngle(cc.v2(posX,posY));
     //设置实际速度
     this._setSpeed(cc.v2(posX,posY));
-
   },
 
   _touchEndEvent: function(){
