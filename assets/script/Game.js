@@ -1,5 +1,5 @@
-var Common = require('JoystickCommon');
-var JoystickBG = require('JoystickBG');
+const Common = require('JoystickCommon');
+const JoystickBG = require('JoystickBG');
 
 cc.Class({
     extends: cc.Component,
@@ -33,13 +33,11 @@ cc.Class({
             default: Common.DirectionType.ALL,
             type: Common.DirectionType,
             displayName: '方向类型',
-
         },   
         sprite: {
             default: null,
             type: cc.Node,
             displayName: '操控的目标',
-
         },   
     
         _stickPos: {
@@ -52,16 +50,24 @@ cc.Class({
             default: null,
             type: cc.Node,
             displayName: '摇杆当前位置',
-
+        },
+        _instance: {
+            default: null
         }
     },
 
     onLoad: function () {
+        this._instance = cc.find('Canvas/Main Camera').getComponent('GameManager');
+        this.setTarget();
         this._createStickSprite();
         //当触摸类型为FOLLOW会在此对圆圈的触摸监听
         if(this.touchType == Common.TouchType.FOLLOW){
             this._initTouchEvent();
         }
+    },
+
+    setTarget() {
+        this.sprite = this._instance.character;
     },
 
     _createStickSprite: function()

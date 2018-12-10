@@ -32,7 +32,7 @@ cc.Class({
     },
 
 
-    _speed: 20,          //实际速度
+    _speed: 0,          //实际速度
     _speed1: 1,         //一段速度
     _speed2: 2,         //二段速度
     _opacity: 0,        //透明度
@@ -73,17 +73,17 @@ cc.Class({
     switch (this._joyCom.directionType)
     {
       case Common.DirectionType.ALL:
-        this._allDirectionsMove();
+        this._allDirectionsMove(dt);
         break;
       default :
         break;
     }
   },
   //全方向移动
-  _allDirectionsMove: function()
-  {
-    this._playerNode.x += Math.cos(this._angle * (Math.PI/180)) * this._speed;
-    this._playerNode.y += Math.sin(this._angle * (Math.PI/180)) * this._speed;
+  _allDirectionsMove: function(dt)
+  { 
+    this._playerNode.x += Math.cos(this._angle * (Math.PI/180)) * this._speed * dt * 10;
+    this._playerNode.y += Math.sin(this._angle * (Math.PI/180)) * this._speed * dt * 10;
   },
 
   //计算两点间的距离并返回
@@ -127,7 +127,7 @@ cc.Class({
     // {
     //   this._speed = this._speed2;
     // }
-    this._speed = 3;
+    this._speed = 20;
   },
 
   _touchStartEvent: function(event) {

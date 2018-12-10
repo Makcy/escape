@@ -1,6 +1,3 @@
-let FrameSize = {};
-let SCREEN_WIDTH;
-let SCREEN_HEIGHT;
 cc.Class({
     extends: cc.Component,
 
@@ -10,26 +7,32 @@ cc.Class({
         },
         animCtrl: {
             type: cc.Animation,
-            default: cc.Vec2(0, 0)
+            default: null
         },
         isPlayingFrontAnim: {
             default: false,
+        },
+        _SCREEN_WIDTH: {
+            default: 0
+        },
+        _SCREEN_HEIGHT: {
+            default: 0
+        },
+        _instance: {
+            default: null
         }
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        this._instance = cc.find('Canvas/Main Camera').getComponent('GameManager');
         if (!this.animCtrl && !this.prePosition) {
             this.animCtrl = this.node.getComponent(cc.Animation);
             this.prePosition = this.node.position;
         }
-
-        if (JSON.stringify(FrameSize) === '{}') {
-            FrameSize = cc.view.getFrameSize();
-            SCREEN_WIDTH = FrameSize.width / 2 - 100;
-            SCREEN_HEIGHT = FrameSize.height / 2 - 100;
-        }
+        this._SCREEN_WIDTH = this._instance.FrameSize.width / 2;
+        this._SCREEN_HEIGHT = this._instance.FrameSize.height / 2;
     },
 
     update (dt) {
@@ -42,20 +45,23 @@ cc.Class({
             this.isPlayingFrontAnim = !this.isPlayingFrontAnim;
             this.animCtrl.play('back');
         }
-        
-        if (this.node.position.x < -SCREEN_WIDTH) {
-            this.node.setPosition(-SCREEN_WIDTH, this.node.position.y);
+        if (this.node.position.x < -this._SCREEN_WIDTH / 2) {
+            this.node.setPosition(-this._SCREEN_WIDTH, this.node.position.y);
         }
-        if (this.node.position.x > SCREEN_WIDTH) {
-            this.node.setPosition(SCREEN_WIDTH, this.node.position.y);
+        if (this.node.position.x > this._SCREEN_WIDTH) {
+            this.node.setPosition(this._SCREEN_WIDTH, this.node.position.y);
         }
-        if (this.node.position.y > SCREEN_HEIGHT) {
-            this.node.setPosition(this.node.position.x, SCREEN_HEIGHT);
+        if (this.node.position.y > this._SCREEN_HEIGHT) {
+            this.node.setPosition(this.node.position.x, this._SCREEN_HEIGHT);
         }
-        if (this.node.position.y < -SCREEN_HEIGHT) {
-            this.node.setPosition(this.node.position.x, -SCREEN_HEIGHT);
+        if (this.node.position.y < -this._SCREEN_HEIGHT) {
+            this.node.setPosition(this.node.position.x, -this._SCREEN_HEIGHT);
         }
         
         this.prePosition = this.node.position;
     },
+
+    onCollisionEnter: function (other, self) {
+
+    }
 });
