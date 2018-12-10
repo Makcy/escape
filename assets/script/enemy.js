@@ -1,5 +1,4 @@
 const { EnemyType } = require('GameConfig');
-const GameManagerInstance = require('GameManager');
 
 cc.Class({
     extends: cc.Component,
@@ -22,7 +21,7 @@ cc.Class({
             type: cc.Node
         },
         speed: {
-            default: 1,
+            default: 10,
             type: cc.Float
         },
         isDie: {
@@ -31,12 +30,16 @@ cc.Class({
         _angle: {
             default: null
         },
+        _instance: {
+            default: null
+        }
         // 碰撞 死亡
         // onBeginContact: handleBeginContact
     },
     onLoad () {
+        this._instance = cc.find('Canvas/Main Camera').getComponent('GameManager');
         if (!this.target) {
-            this.target = GameManagerInstance.character;
+            this.target = this._instance.character;
         }
         if (!this.animCtrl && !this.prePosition) {
             this.animCtrl = this.node.getComponent(cc.Animation);
@@ -59,8 +62,8 @@ cc.Class({
         this.prePosition = this.node.position;
         // Enemy Move 
         this.updateAngle();
-        this.node.x += Math.cos(this._angle * (Math.PI/180)) * this.speed * dt * 20;
-        this.node.y += Math.sin(this._angle * (Math.PI/180)) * this.speed * dt * 20;
+        this.node.x += Math.cos(this._angle * (Math.PI/180)) * this.speed * dt * 10;
+        this.node.y += Math.sin(this._angle * (Math.PI/180)) * this.speed * dt * 10;
     },
     updatePosition(dt) {
         const targetPos = this.target.getPosition();
@@ -69,7 +72,7 @@ cc.Class({
         const ownVec = cc.v2(ownPos.x, ownPos.y);
         const vSub =  targetVec.sub(ownVec);
         const direction = vSub.normalize()
-        const newPos = ownPos.add(direction.mul(this.speed * dt * 20));
+        const newPos = ownPos.add(direction.mul(this.speed * dt * 10));
         this.node.setPosition(newPos);
     },
     updateAngle () {

@@ -70,8 +70,8 @@ const GameManager =cc.Class({
         this.FrameSize = cc.view.getFrameSize();
         this.spawnCharacter();
         this.setJoystick();
-        // this.resetSpawn();
-        // this.spawnEnemy();
+        this.resetSpawn();
+        this.spawnEnemy();
     },
 
     update () {

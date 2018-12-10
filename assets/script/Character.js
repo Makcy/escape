@@ -45,7 +45,7 @@ cc.Class({
             this.isPlayingFrontAnim = !this.isPlayingFrontAnim;
             this.animCtrl.play('back');
         }
-        if (this.node.position.x < -this._SCREEN_WIDTH / 2) {
+        if (this.node.position.x < -this._SCREEN_WIDTH) {
             this.node.setPosition(-this._SCREEN_WIDTH, this.node.position.y);
         }
         if (this.node.position.x > this._SCREEN_WIDTH) {

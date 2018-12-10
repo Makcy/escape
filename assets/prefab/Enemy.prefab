@@ -161,9 +161,10 @@
     "isPlayingFrontAnim": false,
     "type": 0,
     "target": null,
-    "speed": 1,
+    "speed": 8,
     "isDie": false,
     "_angle": null,
+    "_instance": null,
     "_id": ""
   },
   {
@@ -172,9 +173,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "0b9b6af5-9db6-414a-8f73-07c5977fa717"
+      "__uuid__": "863b878a-462c-4c48-bde9-6882bd42987c"
     },
-    "fileId": "d8PcTNEp1KkowhZqcw6lAK",
+    "fileId": "a6vmKw9HdHzbsIGo/S3p5e",
     "sync": false
   }
 ]
