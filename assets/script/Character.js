@@ -35,6 +35,22 @@ cc.Class({
         this._SCREEN_HEIGHT = this._instance.FrameSize.height / 2;
     },
 
+    onEnable () {
+        cc.director.getCollisionManager().enabled = true;
+        // cc.director.getCollisionManager().enabledDebugDraw = true;
+    },
+
+    onDisable: function () {
+        cc.director.getCollisionManager().enabled = false;
+        // cc.director.getCollisionManager().enabledDebugDraw = false;
+    },
+
+    onCollisionEnter: function (other, self) {
+        if (other.node.group === 'enemy') {
+            this._instance.setGameState('GAMEOVER');
+        }
+    },
+
     update (dt) {
         if (this.prePosition.y < this.node.position.y && !this.isPlayingFrontAnim) {
             this.animCtrl.play('front');
@@ -59,9 +75,5 @@ cc.Class({
         }
         
         this.prePosition = this.node.position;
-    },
-
-    onCollisionEnter: function (other, self) {
-
     }
 });

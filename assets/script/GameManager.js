@@ -33,16 +33,6 @@ const GameManager =cc.Class({
             type: cc.Prefab,
             displayName: '普通敌人Prefab'
         },
-        MidEnemyPrefab: {
-            default: null,
-            type: cc.Prefab,
-            displayName: '中型敌人Prefab'
-        },
-        HugeEnemeyPrefab: {
-            default: null,
-            type: cc.Prefab,
-            displayName: '史诗敌人Prefab'
-        },
         spawnNode: {
             type: cc.Node,
             default: null,
@@ -52,6 +42,11 @@ const GameManager =cc.Class({
             default: [],
             type: [cc.Vec2],
             displayName: '出生点'
+        },
+        gameOverPanelPrefab: {
+            type: cc.Prefab,
+            default: null,
+            displayName: '游戏结束面板'
         },
         spawnNum: {
             type: cc.Integer,
@@ -68,43 +63,36 @@ const GameManager =cc.Class({
 
     onLoad () {
         this.FrameSize = cc.view.getFrameSize();
-        this.spawnCharacter();
-        this.setJoystick();
-        this.resetSpawn();
-        this.spawnEnemy();
+        this.gameStart();
     },
 
     update () {
         if (!this.isGameOver) {
-            if (this.score % 8000 === 0) {
-                // this.resetSpawn();
-                // this.spawnEnemy();
+            if (this.score % 1000 === 200) {
+                this.resetSpawn();
+                this.spawnEnemy();
             }
-            this.score += 2;
             this.scoreLabel.string = this.score;
-        }
+            this.score += 2;
+        } 
     },
     
     spawnCharacter () {
-        if (!this.character) {
-            this.character = cc.instantiate(this.CharacterPrefab);
-            this.character.parent = cc.find('Canvas');
-            this.character.setPosition(cc.v2(0, 0));
-        } else {
-            // TODO: reset properties
-        }
+        this.character = cc.instantiate(this.CharacterPrefab);
+        this.character.parent = cc.find('Canvas');
+        this.character.setPosition(cc.v2(0, 0));
     },
 
     setJoystick () {
         const joyStick = cc.instantiate(this.JoyStickPrefab);
         joyStick.parent = cc.find('Canvas');
-        // joyStick.setPosition(cc.v2(0, -200));
+        joyStick.setPosition(cc.v2(0, -200));
     },
 
     resetSpawn () {
         this.spawn = [];
         this.spawn.push(cc.v2(this.getMockPoint('x'), this.FrameSize.height / 2));
-        this.spawn.push(cc.v2(this.getMockPoint('x'), -this.height / 2));
+        this.spawn.push(cc.v2(this.getMockPoint('x'), -this.FrameSize.height / 2));
         this.spawn.push(cc.v2(this.FrameSize.width / 2, this.getMockPoint('y')));
         this.spawn.push(cc.v2(this.FrameSize.width / 2, this.getMockPoint('y')));
         this.spawn.push(cc.v2(-this.FrameSize.width / 2, this.getMockPoint('y')));
@@ -119,9 +107,51 @@ const GameManager =cc.Class({
         });
     },
 
-    getMockPoint(point = 'x') {
+    getMockPoint (point = 'x') {
         const span = point === 'x' ? this.FrameSize.width : this.FrameSize.height;
         return  span / 2 * Math.random() * Math.pow(-1, Math.floor(Math.random() * 10));    
+    },
+
+    setGameState (state) {
+        switch (state) {
+            case 'GAMEOVER': this.gameOver(); break;
+        }
+    },
+
+    gameOver () {
+        this.isGameOver = true;
+        cc.director.pause();
+    
+        const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
+        gameOverPanel.parent = cc.find('Canvas');
+        // this._gameOverPanel.setPosition(cc.v2(0, 0));
+    },
+
+    resetGame () {
+        if (cc.director.isPaused && this.isGameOver) {
+            this.score = 0;
+            this.cleanScreenNode();
+            this.gameStart();
+            cc.director.resume();
+            this.isGameOver = false;
+        }
+    },
+
+    gameStart () {
+        this.spawnCharacter();
+        this.setJoystick();
+            // this.resetSpawn();
+            // this.spawnEnemy();
+    },
+
+    cleanScreenNode () {
+        const joyStick = cc.find('Canvas/JoyStick');
+        const gamePanel = cc.find('Canvas/GameOver');
+        joyStick.destroy();
+        gamePanel.destroy();
+        this.spawnNode.destroyAllChildren();
+        this.character.destroy();
+        this.character = null;
     }
 });
 

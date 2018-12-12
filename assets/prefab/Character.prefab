@@ -141,6 +141,9 @@
     "prePosition": null,
     "animCtrl": null,
     "isPlayingFrontAnim": false,
+    "_SCREEN_WIDTH": 0,
+    "_SCREEN_HEIGHT": 0,
+    "_instance": null,
     "_id": ""
   },
   {
@@ -170,7 +173,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "5b15fbfa-0348-4af4-bd88-25c503057707"
     },
     "fileId": "19xO5ybrJBxpEwlyukJmfb",
     "sync": false

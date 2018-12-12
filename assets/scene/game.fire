@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.42987824312150397,
-      "y": 0.42987824312150397,
+      "x": 0.3107874172259849,
+      "y": 0.3107874172259849,
       "z": 1
     },
     "_quat": {
@@ -237,12 +237,13 @@
     "NormalEnemyPrefab": {
       "__uuid__": "863b878a-462c-4c48-bde9-6882bd42987c"
     },
-    "MidEnemyPrefab": null,
-    "HugeEnemeyPrefab": null,
     "spawnNode": {
       "__id__": 10
     },
     "spawn": [],
+    "gameOverPanelPrefab": {
+      "__uuid__": "7b0c4b2e-c580-4ae1-8596-b9a102148c51"
+    },
     "spawnNum": 5,
     "character": null,
     "_id": "422pctumxPz6uYKo/L7c51"

@@ -82,7 +82,6 @@ cc.Class({
   //全方向移动
   _allDirectionsMove: function(dt)
   { 
-    console.log(Math.cos(this._angle * (Math.PI/180)) * this._speed * dt * 10);
     this._playerNode.x += Math.cos(this._angle * (Math.PI/180)) * this._speed * dt * 10;
     this._playerNode.y += Math.sin(this._angle * (Math.PI/180)) * this._speed * dt * 10;
   },
