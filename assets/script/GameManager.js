@@ -1,3 +1,4 @@
+const shareUtil = require('./share.js');
 const GameManager =cc.Class({
     extends: cc.Component,
     statics: {
@@ -63,6 +64,7 @@ const GameManager =cc.Class({
 
     onLoad () {
         this.FrameSize = cc.view.getFrameSize();
+        this.initShare();
         this.gameStart();
     },
 
@@ -72,9 +74,17 @@ const GameManager =cc.Class({
                 this.resetSpawn();
                 this.spawnEnemy();
             }
-            this.scoreLabel.string = this.score;
             this.score += 2;
+            this.scoreLabel.string = this.score;
         } 
+    },
+
+    initShare() {
+        if (cc.sys.os != cc.sys.OS_OSX) {
+            cc.loader.loadRes('texture/share',(err, data) => {
+                shareUtil.shareMenu(wx, data);
+            });
+        }
     },
     
     spawnCharacter () {
