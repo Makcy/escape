@@ -65,7 +65,7 @@ const GameManager =cc.Class({
     onLoad () {
         this.FrameSize = cc.view.getFrameSize();
         this.initShare();
-        this.gameStart();
+        // this.gameStart();
     },
 
     update () {
