@@ -1,48 +1,56 @@
+const GameTools = require('GameTools');
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        title: {
-            type: cc.Label,
-            default: null
-        },
-        icon: {
-            default: null,
-            type: cc.Sprite
-        },
-        des: {
-            type: cc.Label, 
-            default: null
-        },
-        cd: {
-            type: cc.Label,
-            default: null
-        },
+        title: cc.Label,
+        icon: cc.Sprite,
+        des: cc.Label,
+        cd: cc.Label,
+        exp: cc.Label,
         isGet: false,
-        button: {
-            default: null,
-            type: cc.Button
-        },
-        btnDes: {
-            default: null,
-            type: cc.Label
-        }
+        studyBtn: cc.Button,
+        unlockSprite: cc.Sprite,
+        btnDes: cc.Label,
+        id: 0
     },
 
-    setSkillInfo({title, icon, des, cd}) {
+    setSkillInfo({title, icon, des, cd, exp, unLock, id}) {
         this.title.string = title;
         this.icon.getComponent(cc.Sprite).spriteFrame = icon;
         this.des.string = des;
-        this.cd.string = `冷却时间：${cd}秒`
+        this.exp.string = `${exp}点`;
+        this.cd.string = `${cd}秒`;
+        this.id = id;
+        if (unLock) {
+            this.unLockSkill();
+        }
     },
 
     onLoad () {
-
+        this.studyBtn.node.on('click', this.studyBtnCallback, this);
     },
 
-    start () {
-
+    studyBtnCallback(event) {
+        const isStudy = GameTools.studySkill(this.id);
+        if (isStudy) {
+            this.unLockSkill();
+            this.freshExpDisplay();
+        }
     },
+
+    unLockSkill() {
+        this.studyBtn.node.active = false;
+        this.unlockSprite.node.active = true;
+    },
+
+    freshExpDisplay() {
+       if (cc.director.getScene().name === 'skill') {
+           const expLabel = cc.find('Canvas/exp/value').getComponent(cc.Label);
+           const expValue = GameTools.getLocalData('exp') || 0;
+           expLabel.string = expValue;
+       }
+    }
 
     // update (dt) {},
 });

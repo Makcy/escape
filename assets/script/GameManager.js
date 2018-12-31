@@ -1,5 +1,5 @@
 const shareUtil = require('./share.js');
-const GameManager =cc.Class({
+const GameManager = cc.Class({
     extends: cc.Component,
     statics: {
         instance: null
@@ -61,6 +61,7 @@ const GameManager =cc.Class({
     },
 
     // LIFE-CYCLE CALLBACKS:
+    //  TODO: 切换场景hook: 初始化变量
 
     onLoad () {
         this.FrameSize = cc.view.getFrameSize();
@@ -69,18 +70,20 @@ const GameManager =cc.Class({
     },
 
     update () {
-        if (!this.isGameOver) {
-            if (this.score % 1000 === 200) {
-                this.resetSpawn();
-                this.spawnEnemy();
-            }
-            this.score += 2;
-            this.scoreLabel.string = this.score;
-        } 
+        if (cc.director.getScene().name === 'game') {
+            if (!this.isGameOver) {
+                if (this.score % 1000 === 200) {
+                    this.resetSpawn();
+                    this.spawnEnemy();
+                }
+                this.score += 2;
+                this.scoreLabel.string = this.score;
+            } 
+        }
     },
 
     initShare() {
-        if (cc.sys.os != cc.sys.OS_OSX) {
+        if (CC_WECHATGAME) {
             cc.loader.loadRes('texture/share',(err, data) => {
                 shareUtil.shareMenu(wx, data);
             });

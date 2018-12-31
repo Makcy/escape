@@ -1,8 +1,18 @@
 {
+  "android-instant": {
+    "REMOTE_SERVER_ROOT": "",
+    "host": "",
+    "pathPattern": "",
+    "recordPath": "",
+    "scheme": "https",
+    "skipRecord": false
+  },
   "appKey": "",
   "appSecret": "",
   "encryptJs": true,
-  "excludeScenes": [],
+  "excludeScenes": [
+    "ca5175a0-8a1a-4e10-86b7-a42ad4be0d4f"
+  ],
   "fb-instant-games": {},
   "includeAnySDK": false,
   "includeSDKBox": false,
@@ -25,7 +35,7 @@
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait"
   },
-  "startScene": "ca5175a0-8a1a-4e10-86b7-a42ad4be0d4f",
+  "startScene": "abf01891-4494-4d6d-9d23-5b809e1d0fc4",
   "title": "escape",
   "webOrientation": "auto",
   "wechatgame": {
@@ -33,16 +43,8 @@
     "appid": "wx4a50d26fdfee8969",
     "isSubdomain": false,
     "orientation": "portrait",
-    "subContext": ""
+    "subContext": "escapeOpen"
   },
   "xxteaKey": "e652349f-9b77-45",
-  "zipCompressJs": true,
-  "android-instant": {
-    "REMOTE_SERVER_ROOT": "",
-    "pathPattern": "",
-    "scheme": "https",
-    "host": "",
-    "skipRecord": false,
-    "recordPath": ""
-  }
+  "zipCompressJs": true
 }
