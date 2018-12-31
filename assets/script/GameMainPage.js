@@ -1,3 +1,4 @@
+const GameTools = require('GameTools');
 cc.Class({
     extends: cc.Component,
 
@@ -30,7 +31,11 @@ cc.Class({
     },
 
     startBtnCallback(event) {
-        // cc.director.loadScene('game');
+        const skills = GameTools.getLocalData('ownSkills');
+        if (!skills || skills.length === 0) {
+            cc.director.loadScene('game');
+        }
+        cc.director.loadScene('prepare');
     },
 
     rankBtnCallback(event) {

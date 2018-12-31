@@ -34,6 +34,7 @@ cc.Class({
                     }
                     if (!userInfo){
                         GameTools.setLocalData('userInfo', res.userInfo);
+                        GameTools.setLocalData('currentSkill', 0);
                     }
                     if (!ownSkills || ownSkills.length === 0) {
                         GameTools.setLocalData('ownSkills', []);

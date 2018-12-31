@@ -16,10 +16,6 @@ cc.Class({
         this.backBtn.node.on('click', this.backBtnCallback, this);
     },
 
-    start () {
-
-    },
-
     backBtnCallback(event) {
         cc.director.loadScene('main');
     },

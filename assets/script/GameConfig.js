@@ -8,7 +8,7 @@ module.exports = {
   //  Type: Directive, Surround, Buff
   skills: [
     {
-      id: 0,
+      id: 1,
       title: '凤舞九天',
       des: '传闻为陆小凤所创，此招一出，天不得时，日月无光',
       icon: 'skill_01',
@@ -19,7 +19,7 @@ module.exports = {
       prefab: 'skill_01'
     },
     {
-      id: 1,
+      id: 2,
       title: '凤舞九天',
       des: '传闻为陆小凤所创，此招一出，天不得时，日月无光',
       icon: 'skill_01',

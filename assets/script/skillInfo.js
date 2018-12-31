@@ -10,12 +10,13 @@ cc.Class({
         exp: cc.Label,
         isGet: false,
         studyBtn: cc.Button,
+        equipBtn: cc.Button,
         unlockSprite: cc.Sprite,
         btnDes: cc.Label,
         id: 0
     },
 
-    setSkillInfo({title, icon, des, cd, exp, unLock, id}) {
+    setSkillInfo({title, icon, des, cd, exp, unLock, isPrepare, id}) {
         this.title.string = title;
         this.icon.getComponent(cc.Sprite).spriteFrame = icon;
         this.des.string = des;
@@ -25,10 +26,16 @@ cc.Class({
         if (unLock) {
             this.unLockSkill();
         }
+        if (isPrepare) {
+            this.studyBtn.node.active = false;
+            this.equipBtn.node.active = true;
+            this.unlockSprite.node.active = false;
+        }
     },
 
     onLoad () {
         this.studyBtn.node.on('click', this.studyBtnCallback, this);
+        this.equipBtn.node.on('click', this.equipBtnCallback, this);
     },
 
     studyBtnCallback(event) {
@@ -37,6 +44,11 @@ cc.Class({
             this.unLockSkill();
             this.freshExpDisplay();
         }
+    },
+
+    equipBtnCallback(event) {
+        GameTools.setLocalData('currentSkill', this.id);
+        cc.director.loadScene('game');
     },
 
     unLockSkill() {
