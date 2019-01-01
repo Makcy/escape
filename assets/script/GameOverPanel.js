@@ -2,22 +2,11 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        resetGameBtn: {
-            type: cc.Button,
-            default: null
-        },
-        backBtn: {
-            type: cc.Button,
-            default: null
-        },
-        scoreLabel: {
-            type: cc.Label,
-            default: null
-        },
-        expLabel: {
-            type: cc.Label,
-            default: null
-        },
+        resetGameBtn: cc.Button,
+        backBtn: cc.Button,
+        scoreLabel: cc.Label,
+        expLabel: cc.Label,
+        totalExpLabel: cc.Label,
         _instance: {
             default: null
         }
@@ -31,6 +20,7 @@ cc.Class({
         this.backBtn.node.on('click', this.backGameBtnCallback, this);
         this.scoreLabel.string = this._instance.score; 
         this.expLabel.string = this._instance.exp; 
+        this.totalExpLabel.string = this._instance.totalExp; 
     },
 
     resetGameBtnCallback (event) {

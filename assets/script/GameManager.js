@@ -10,21 +10,11 @@ const GameManager = cc.Class({
         FrameSize: {
             default: {}
         },
-        scoreLabel: {
-            default: null,
-            type: cc.Label
-        },
-        score: {
-            default: 0,
-            type: cc.Integer
-        },
-        exp: {
-            default: 0,
-            type: cc.Integer
-        },
-        isGameOver: {
-            default: false
-        },
+        scoreLabel: cc.Label,
+        score: 0,
+        exp: 0,
+        totalExp: 0,
+        isGameOver: false,
         CharacterPrefab: {
             default: null,
             type: cc.Prefab,
@@ -60,13 +50,13 @@ const GameManager = cc.Class({
             default: 5,
             displayName: '敌人出生点数量'
         },
-        character: {
-            type: cc.Node,
-            default: null
-        }
+        character: cc.Node
     },
 
     onLoad () {
+        if (CC_WECHATGAME) {
+            this.totalExp = GameTools.getLocalData('exp') || 0;
+        }
         this.FrameSize = cc.view.getFrameSize();
         // this.initShare();
         this.gameStart();

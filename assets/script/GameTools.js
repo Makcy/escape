@@ -40,7 +40,7 @@ module.exports = {
   addExp(value) {
     const exp = this.getLocalData('exp') || 0;
     this.setLocalData('exp', exp + value);
-  }
+  },
 
   getUserInfoInWeChat () {
     if (CC_WECHATGAME) {
