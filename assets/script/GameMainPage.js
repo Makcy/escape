@@ -34,6 +34,7 @@ cc.Class({
         const skills = GameTools.getLocalData('ownSkills');
         if (!skills || skills.length === 0) {
             cc.director.loadScene('game');
+            return;
         }
         cc.director.loadScene('prepare');
     },
