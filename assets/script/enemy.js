@@ -78,7 +78,7 @@ cc.Class({
     updateAngle () {
         const ownPos = this.node.getPosition();
         const targetPos = this.target.getPosition();
-        this._angle = Math.atan2(targetPos.y - ownPos.y, targetPos.x - ownPos.x) * (180/Math.PI);
+        this._angle = Math.atan2(targetPos.y - ownPos.y, targetPos.x - ownPos.x) * (180 / Math.PI);
     },
     handleBeginContact (contact, selfCollider, otherCollider) {
 

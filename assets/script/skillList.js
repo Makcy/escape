@@ -15,14 +15,13 @@ cc.Class({
 
     onLoad () {
         // TODO: read user info
-        this.loadAllSkill(this.isStudy, this.isPrepare);
+        this.loadAllSkill(this.isPrepare);
     },
 
-    loadAllSkill (isStudy = false, isPrepare = false) {
+    loadAllSkill (isPrepare = false) {
         this.contentNode.height = GameConfig.skills.length * SKILL_ITEM_HEIGHT;
         const ownSkills = GameTools.getLocalData('ownSkills') || [];
         const skills = isPrepare ? GameConfig.skills.filter(s => ownSkills.includes(s.id)) : GameConfig.skills;
-        console.log(skills);
         for(let i = 0; i < skills.length; i++) {
            const info = GameConfig.skills[i];
            const item = cc.instantiate(this.skillItem);

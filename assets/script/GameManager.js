@@ -1,4 +1,6 @@
 const shareUtil = require('./share.js');
+const GameTools = require('GameTools');
+
 const GameManager = cc.Class({
     extends: cc.Component,
     statics: {
@@ -13,6 +15,10 @@ const GameManager = cc.Class({
             type: cc.Label
         },
         score: {
+            default: 0,
+            type: cc.Integer
+        },
+        exp: {
             default: 0,
             type: cc.Integer
         },
@@ -60,13 +66,10 @@ const GameManager = cc.Class({
         }
     },
 
-    // LIFE-CYCLE CALLBACKS:
-    //  TODO: 切换场景hook: 初始化变量
-
     onLoad () {
         this.FrameSize = cc.view.getFrameSize();
-        this.initShare();
-        // this.gameStart();
+        // this.initShare();
+        this.gameStart();
     },
 
     update () {
@@ -133,10 +136,14 @@ const GameManager = cc.Class({
 
     gameOver () {
         this.isGameOver = true;
+        this.exp = Math.floor(this.score / 10);
         cc.director.pause();
     
         const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
         gameOverPanel.parent = cc.find('Canvas');
+        if (CC_WECHATGAME) {
+            GameTools.addExp(this.exp);
+        }
         // this._gameOverPanel.setPosition(cc.v2(0, 0));
     },
 
