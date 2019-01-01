@@ -77,7 +77,7 @@ const GameManager = cc.Class({
 
     initShare() {
         if (CC_WECHATGAME) {
-            cc.loader.loadRes('texture/share',(err, data) => {
+                cc.loader.loadRes('texture/share',(err, data) => {
                 shareUtil.shareMenu(wx, data);
             });
         }
@@ -126,7 +126,7 @@ const GameManager = cc.Class({
 
     gameOver () {
         this.isGameOver = true;
-        this.exp = Math.floor(this.score / 10);
+        this.exp = Math.floor(this.score / 50);
         cc.director.pause();
     
         const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);

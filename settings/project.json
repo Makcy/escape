@@ -14,11 +14,18 @@
     [
       false,
       false,
+      true,
       true
     ],
     [
       false,
       true,
+      false
+    ],
+    [
+      false,
+      true,
+      false,
       false
     ]
   ],
@@ -30,7 +37,8 @@
   "group-list": [
     "ui",
     "enemy",
-    "character"
+    "character",
+    "skill"
   ],
   "simulator-orientation": false,
   "simulator-resolution": {

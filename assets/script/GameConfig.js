@@ -13,21 +13,10 @@ module.exports = {
       des: '传闻为陆小凤所创，此招一出，天不得时，日月无光',
       icon: 'skill_01',
       cd: 5,
-      exp: 0,
+      exp: 1000,
       type: 'Surround',
       range: 4,
-      prefab: 'skill_01'
-    },
-    {
-      id: 2,
-      title: '凤舞九天',
-      des: '传闻为陆小凤所创，此招一出，天不得时，日月无光',
-      icon: 'skill_01',
-      cd: 10,
-      exp: 2000,
-      type: 'Surround',
-      range: 4,
-      prefab: 'skill_01'
+      prefab: 'skill_1'
     }
   ]
 }
