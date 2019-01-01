@@ -132,7 +132,8 @@ const GameManager = cc.Class({
         const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
         gameOverPanel.parent = cc.find('Canvas');
         if (CC_WECHATGAME) {
-            GameTools.addExp(this.exp);
+            const newExp = GameTools.addExp(this.exp);
+            this.totalExp = newExp;
         }
         // this._gameOverPanel.setPosition(cc.v2(0, 0));
     },

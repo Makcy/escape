@@ -14,7 +14,7 @@ cc.Class({
     onLoad () {
         if (CC_WECHATGAME) {
             const currentSkillId = GameTools.getLocalData('currentSkill');
-            if (!currentSkill || currentSkill === 0) {
+            if (!currentSkillId || currentSkillId === 0) {
                 this.node.active = false;
             }
             this.currentSkill = GameConfig.skills.find(s => s.id === currentSkillId);

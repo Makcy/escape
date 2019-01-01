@@ -39,7 +39,9 @@ module.exports = {
 
   addExp(value) {
     const exp = this.getLocalData('exp') || 0;
-    this.setLocalData('exp', exp + value);
+    const newExp = exp + value;
+    this.setLocalData('exp', newExp);
+    return newExp;
   },
 
   getUserInfoInWeChat () {

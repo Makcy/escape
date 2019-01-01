@@ -88,8 +88,6 @@ cc.Class({
         // 触摸在圆圈内离开或在圆圈外离开后，摇杆归位，player速度为0
         self.node.on(cc.Node.EventType.TOUCH_END, self._touchEndEvent,self);
         self.node.on(cc.Node.EventType.TOUCH_CANCEL, self._touchEndEvent,self);
-
-        
     },
 
     _touchStartEvent: function(event) {
