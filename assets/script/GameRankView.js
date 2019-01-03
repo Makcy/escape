@@ -15,8 +15,8 @@ cc.Class({
     console.log('主域')
     if (CC_WECHATGAME) {
       this.tex = new cc.Texture2D();
-      window.wx.showShareMenu({withShareTicket: true});//设置分享按钮，方便获取群id展示群排行榜
-      window.wx.postMessage({
+      wx.showShareMenu({withShareTicket: true});//设置分享按钮，方便获取群id展示群排行榜
+      wx.postMessage({
           messageType: 1
       });
     }
@@ -27,8 +27,8 @@ cc.Class({
   },
 
   _updateSubDomainCanvas() {
-    if (window.sharedCanvas != undefined) {
-      this.tex.initWithElement(window.sharedCanvas);
+    if (sharedCanvas != undefined) {
+      this.tex.initWithElement(sharedCanvas);
       this.tex.handleLoadedTexture();
       this.rankingScrollView.spriteFrame = new cc.SpriteFrame(this.tex);
     }

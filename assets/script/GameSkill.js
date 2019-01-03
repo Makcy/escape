@@ -10,7 +10,8 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        GameTools.setLocalData('exp', 10000);
+        // TODO: remove init exp    
+        GameTools.setLocalData('exp', 1000);
         const exp = GameTools.getLocalData('exp') || 0;
         this.expLabel.string = exp;
         this.backBtn.node.on('click', this.backBtnCallback, this);

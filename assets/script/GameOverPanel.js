@@ -28,6 +28,7 @@ cc.Class({
     },
 
     backGameBtnCallback (event) {
+        cc.director.resume();
         cc.director.loadScene('main');
     }
 });

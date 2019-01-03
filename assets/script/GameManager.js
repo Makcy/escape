@@ -134,6 +134,13 @@ const GameManager = cc.Class({
         if (CC_WECHATGAME) {
             const newExp = GameTools.addExp(this.exp);
             this.totalExp = newExp;
+            //  submit score
+            wx.postMessage({
+                messageType: 2,
+                data: {
+                    score: this.score
+                }
+            });
         }
         // this._gameOverPanel.setPosition(cc.v2(0, 0));
     },
@@ -151,8 +158,6 @@ const GameManager = cc.Class({
     gameStart () {
         this.spawnCharacter();
         this.setJoystick();
-            // this.resetSpawn();
-            // this.spawnEnemy();
     },
 
     cleanScreenNode () {
