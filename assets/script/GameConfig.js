@@ -10,9 +10,9 @@ module.exports = {
     {
       id: 1,
       title: '凤舞九天',
-      des: '传闻为陆小凤所创，此招一出，天不得时，日月无光',
+      des: '传说为陆小凤独创，此招一出，天不得时，日月无光',
       icon: 'skill_01',
-      cd: 5,
+      cd: 10,
       exp: 1000,
       type: 'Surround',
       range: 4,
@@ -21,8 +21,9 @@ module.exports = {
   ],
 
   adUnitId: {
-    video: 'adunit-1a2e3901300c1386'
+    video: 'adunit-1a2e3901300c1386',
+    main: 'adunit-0eb3bc00d8f65bae'
   },
 
-  DailyTaskExp: 500
+  DailyTaskExp: 300
 }

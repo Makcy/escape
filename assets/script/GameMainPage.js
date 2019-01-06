@@ -1,4 +1,6 @@
 const GameTools = require('GameTools');
+const GameConfig = require('GameConfig');
+const share = require('share');
 cc.Class({
     extends: cc.Component,
 
@@ -19,11 +21,15 @@ cc.Class({
             default: null,
             type: cc.Button
         },
+        bannerAd: null
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        if (CC_WECHATGAME) {
+            this.bannerAd = share.showBanner(GameConfig.adUnitId.main);
+        }
         this.startBtn.node.on('click', this.startBtnCallback, this);
         this.rankBtn.node.on('click', this.rankBtnCallback, this);
         this.skillBtn.node.on('click', this.skillBtnCallback, this);
@@ -40,15 +46,22 @@ cc.Class({
     },
 
     rankBtnCallback(event) {
-        cc.director.loadScene('rank');
+        this.switchScene('rank');
     },
 
     skillBtnCallback(event) {
-        cc.director.loadScene('skill');
+        this.switchScene('skill');
     },
 
     taskBtnCallback(event) {
-        cc.director.loadScene('task');
+        this.switchScene('task');
+    },
+    
+    switchScene(sceneName) {
+        cc.director.loadScene(sceneName);
+        if (this.bannerAd) {
+            share.destroyBanner(this.bannerAd);
+        }
     }
 
     // update (dt) {},
