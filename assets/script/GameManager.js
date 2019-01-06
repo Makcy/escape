@@ -128,9 +128,7 @@ const GameManager = cc.Class({
         this.isGameOver = true;
         this.exp = Math.floor(this.score / 50);
         cc.director.pause();
-    
-        const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
-        gameOverPanel.parent = cc.find('Canvas');
+        
         if (CC_WECHATGAME) {
             const newExp = GameTools.addExp(this.exp);
             this.totalExp = newExp;
@@ -142,6 +140,8 @@ const GameManager = cc.Class({
                 }
             });
         }
+        const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
+        gameOverPanel.parent = cc.find('Canvas');
         // this._gameOverPanel.setPosition(cc.v2(0, 0));
     },
 
@@ -149,9 +149,9 @@ const GameManager = cc.Class({
         if (cc.director.isPaused && this.isGameOver) {
             this.score = 0;
             this.cleanScreenNode();
+            this.isGameOver = false;
             this.gameStart();
             cc.director.resume();
-            this.isGameOver = false;
         }
     },
 
@@ -164,10 +164,10 @@ const GameManager = cc.Class({
         const joyStick = cc.find('Canvas/JoyStick');
         const gamePanel = cc.find('Canvas/GameOver');
         joyStick.destroy();
-        gamePanel.destroy();
         this.spawnNode.destroyAllChildren();
         this.character.destroy();
         this.character = null;
+        gamePanel.destroy();
     }
 });
 

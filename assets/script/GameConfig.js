@@ -18,5 +18,11 @@ module.exports = {
       range: 4,
       prefab: 'skill_1'
     }
-  ]
+  ],
+
+  adUnitId: {
+    video: 'adunit-1a2e3901300c1386'
+  },
+
+  DailyTaskExp: 500
 }

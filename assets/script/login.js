@@ -27,6 +27,7 @@ cc.Class({
                 button.onTap((res) => {
                     const userInfo = GameTools.getLocalData('userInfo');
                     const ownSkills = GameTools.getLocalData('ownSkills');
+                    const daily = GameTools.getLocalData('daily');
 
                     console.log(`LoginInfo: ${userInfo}`);
                     if (!res.userInfo) {
@@ -35,6 +36,9 @@ cc.Class({
                     if (!userInfo){
                         GameTools.setLocalData('userInfo', res.userInfo);
                         GameTools.setLocalData('currentSkill', 0);
+                    }
+                    if (!daily) {
+                        GameTools.setLocalData('daily', GameTools.formatTime(new Date(), 'yyyy-MM-dd'));
                     }
                     if (!ownSkills || ownSkills.length === 0) {
                         GameTools.setLocalData('ownSkills', []);
