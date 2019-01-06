@@ -12,8 +12,8 @@ module.exports = {
       title: '凤舞九天',
       des: '传说为陆小凤独创，此招一出，天不得时，日月无光',
       icon: 'skill_01',
-      cd: 10,
-      exp: 1000,
+      cd: 20,
+      exp: 800,
       type: 'Surround',
       range: 4,
       prefab: 'skill_1'
@@ -25,5 +25,6 @@ module.exports = {
     main: 'adunit-0eb3bc00d8f65bae'
   },
 
-  DailyTaskExp: 300
+  DailyTaskExp: 200,
+  SignInTaskExp: 50
 }

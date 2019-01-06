@@ -58,7 +58,7 @@ const GameManager = cc.Class({
             this.totalExp = GameTools.getLocalData('exp') || 0;
         }
         this.FrameSize = cc.view.getFrameSize();
-        // this.initShare();
+        this.initShare();
         this.gameStart();
     },
 
@@ -77,7 +77,7 @@ const GameManager = cc.Class({
 
     initShare() {
         if (CC_WECHATGAME) {
-                cc.loader.loadRes('texture/share',(err, data) => {
+            cc.loader.loadRes('texture/share',(err, data) => {
                 shareUtil.shareMenu(wx, data);
             });
         }

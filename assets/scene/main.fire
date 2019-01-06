@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.7657004830917874,
-      "y": 0.7657004830917874,
+      "x": 0.7927028523133307,
+      "y": 0.7927028523133307,
       "z": 1
     },
     "_quat": {
@@ -240,6 +240,7 @@
     "taskBtn": {
       "__id__": 21
     },
+    "bannerAd": null,
     "_id": "a5WOahDY1FabkNYPWT4A3s"
   },
   {
@@ -764,7 +765,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "eb1736c4-d690-46c2-a796-1d3e22d6f945"
+      "__uuid__": "e904ac4a-3738-438d-a868-f7607f6aec33"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1011,7 +1012,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "eb1736c4-d690-46c2-a796-1d3e22d6f945"
+      "__uuid__": "cabbf4c5-88fb-487a-a602-76ba1f9d26a2"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1190,7 +1191,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "eb1736c4-d690-46c2-a796-1d3e22d6f945"
+      "__uuid__": "ddde34fc-c6e2-40c2-80f2-a50cfc1ab795"
     },
     "_type": 1,
     "_sizeMode": 0,

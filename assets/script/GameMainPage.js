@@ -29,6 +29,9 @@ cc.Class({
     onLoad () {
         if (CC_WECHATGAME) {
             this.bannerAd = share.showBanner(GameConfig.adUnitId.main);
+            cc.loader.loadRes('texture/share',(err, data) => {
+                share.shareMenu(wx, data);
+            });
         }
         this.startBtn.node.on('click', this.startBtnCallback, this);
         this.rankBtn.node.on('click', this.rankBtnCallback, this);
@@ -39,10 +42,10 @@ cc.Class({
     startBtnCallback(event) {
         const skills = GameTools.getLocalData('ownSkills');
         if (!skills || skills.length === 0) {
-            cc.director.loadScene('game');
+            this.switchScene('game');
             return;
         }
-        cc.director.loadScene('prepare');
+        this.switchScene('prepare');
     },
 
     rankBtnCallback(event) {

@@ -3,7 +3,7 @@ module.exports = {
     wx.showShareMenu();
     wx.onShareAppMessage(() => {
       return {
-        title: '追上我，来一场对决吧',
+        title: '追不上我吧，啦啦啦啦啦啦~',
         imageUrl: data.url
       }
     });

@@ -1,4 +1,5 @@
 const GameTools = require('GameTools');
+const shareUtil = require('share');
 
 cc.Class({
     extends: cc.Component,
@@ -46,6 +47,9 @@ cc.Class({
                     cc.director.loadScene('main');
                     button.destroy();
                 });
+            });
+            cc.loader.loadRes('texture/share',(err, data) => {
+                shareUtil.shareMenu(wx, data);
             });
         }
     },

@@ -20,7 +20,7 @@ cc.Class({
         this.title.string = title;
         this.icon.getComponent(cc.Sprite).spriteFrame = icon;
         this.des.string = des;
-        this.exp.string = `${exp}点`;
+        this.exp.string = `${exp}`;
         this.cd.string = `${cd}秒`;
         this.id = id;
         if (unLock) {

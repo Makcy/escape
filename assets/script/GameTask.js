@@ -7,12 +7,14 @@ cc.Class({
 
     properties: {
         backBtn: cc.Button,
-        taskBtn: cc.Button
+        videoBtn: cc.Button,
+        signInBtn: cc.Button
     },
 
     onLoad() {
         this.backBtn.node.on('click', this.backBtnCallback, this);
-        this.taskBtn.node.on('click', this.videoTaskBtnCallback, this);
+        this.videoBtn.node.on('click', this.videoTaskBtnCallback, this);
+        this.signInBtn.node.on('click', this.signInBtnTaskCallback, this);
     },
 
     backBtnCallback(event) {
@@ -31,6 +33,10 @@ cc.Class({
                 GameConfig.adUnitId.video
             );
         }
+    },
+
+    signInBtnTaskCallback(event) {
+        GameTools.addExp(GameConfig.SignInTaskExp);
     },
 
     taskSuccess() {
