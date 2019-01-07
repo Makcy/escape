@@ -13,7 +13,7 @@ module.exports = {
       des: '传说为陆小凤独创，此招一出，天不得时，日月无光',
       icon: 'skill_01',
       cd: 20,
-      exp: 800,
+      exp: 1000,
       type: 'Surround',
       range: 4,
       prefab: 'skill_1'

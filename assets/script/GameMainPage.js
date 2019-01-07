@@ -54,7 +54,7 @@ cc.Class({
 
     skillBtnCallback(event) {
         this.switchScene('skill');
-    },
+    },  
 
     taskBtnCallback(event) {
         this.switchScene('task');

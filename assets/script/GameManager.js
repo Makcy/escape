@@ -14,6 +14,7 @@ const GameManager = cc.Class({
         score: 0,
         exp: 0,
         totalExp: 0,
+        tempExp: 0,
         isGameOver: false,
         CharacterPrefab: {
             default: null,
@@ -128,9 +129,11 @@ const GameManager = cc.Class({
         this.isGameOver = true;
         this.exp = Math.floor(this.score / 50);
         cc.director.pause();
-        
+        const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
+        gameOverPanel.parent = cc.find('Canvas');
+        // this._gameOverPanel.setPosition(cc.v2(0, 0));
         if (CC_WECHATGAME) {
-            const newExp = GameTools.addExp(this.exp);
+            const newExp = GameTools.addExp(this.exp - this.tempExp);
             this.totalExp = newExp;
             //  submit score
             wx.postMessage({
@@ -140,14 +143,19 @@ const GameManager = cc.Class({
                 }
             });
         }
-        const gameOverPanel = cc.instantiate(this.gameOverPanelPrefab);
-        gameOverPanel.parent = cc.find('Canvas');
-        // this._gameOverPanel.setPosition(cc.v2(0, 0));
+    },
+
+    resgureGame() {
+        this.cleanGameOverPanel();
+        this.cleanEnemyies();
+        this.isGameOver = false;
+        cc.director.resume();
     },
 
     resetGame () {
         if (cc.director.isPaused && this.isGameOver) {
             this.score = 0;
+            this.tempExp = 0;
             this.cleanScreenNode();
             this.isGameOver = false;
             this.gameStart();
@@ -160,14 +168,30 @@ const GameManager = cc.Class({
         this.setJoystick();
     },
 
-    cleanScreenNode () {
+    cleanJoyStick() {
         const joyStick = cc.find('Canvas/JoyStick');
-        const gamePanel = cc.find('Canvas/GameOver');
         joyStick.destroy();
+    },
+
+    cleanEnemyies() {
         this.spawnNode.destroyAllChildren();
+    },
+
+    cleanGameOverPanel() {
+        const gamePanel = cc.find('Canvas/GameOver');
+        gamePanel.destroy();
+    },
+
+    cleanCharacter() {
         this.character.destroy();
         this.character = null;
-        gamePanel.destroy();
+    },
+
+    cleanScreenNode () {
+        this.cleanJoyStick();
+        this.cleanEnemyies();
+        this.cleanGameOverPanel();
+        this.cleanCharacter();
     }
 });
 

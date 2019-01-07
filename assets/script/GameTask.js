@@ -15,6 +15,16 @@ cc.Class({
         this.backBtn.node.on('click', this.backBtnCallback, this);
         this.videoBtn.node.on('click', this.videoTaskBtnCallback, this);
         this.signInBtn.node.on('click', this.signInBtnTaskCallback, this);
+
+        const signInTask = GameTools.getLocalData('signIn');
+        const videoTask = GameTools.getLocalData('video');
+        if (signInTask === GameTools.formatTime(new Date(), 'yyyy-MM-dd')) {
+            this.videoBtn.interactable = false;
+        }
+
+        if (videoTask === GameTools.formatTime(new Date(), 'yyyy-MM-dd')) {
+            this.signInBtn.interactable = false;
+        }
     },
 
     backBtnCallback(event) {
@@ -22,11 +32,6 @@ cc.Class({
     },
 
     videoTaskBtnCallback(event) {
-        const daily = GameTools.getLocalData('daily');
-        if (daily === GameTools.formatTime(new Date(), 'yyyy-MM-dd')) {
-            // TODO 今日已经领取
-            return;
-        }
         if (CC_WECHATGAME) {
             share.playVideo(
                 this.taskSuccess,
@@ -36,11 +41,15 @@ cc.Class({
     },
 
     signInBtnTaskCallback(event) {
+        this.signInBtn.interactable = false;
+        GameTools.setLocalData('signIn', GameTools.formatTime(new Date(), 'yyyy-MM-dd'));
         GameTools.addExp(GameConfig.SignInTaskExp);
     },
 
     taskSuccess() {
         console.log('金币领取成功')
+        this.videoBtn.interactable = false;
+        GameTools.setLocalData('video', GameTools.formatTime(new Date(), 'yyyy-MM-dd'));
         GameTools.addExp(GameConfig.DailyTaskExp);
     }
 });
