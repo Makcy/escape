@@ -34,14 +34,9 @@ cc.Class({
             cc.loader.loadRes('texture/share',(err, data) => {
                 wx.shareAppMessage({
                     title: '追不上我吧，啦啦啦啦啦啦~',
-                    imageUrl: data.url,
-                    success(res) {
-                        this._instance.resgureGame();
-                    },
-                    fail(res) {
-                        console.log('分享失败');
-                    }
-                })
+                    imageUrl: data.url
+                });
+                this._instance.resgureGame();
             })
         }
     },

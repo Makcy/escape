@@ -47,6 +47,7 @@ module.exports = {
     bannerAd.onResize(res => {
         bannerAd.style.top = winSize.windowHeight - bannerAd.style.realHeight;
     });
+    bannerAd.onError(err => console.log(err));
     return bannerAd;
   },
 
