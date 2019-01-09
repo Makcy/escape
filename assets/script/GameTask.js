@@ -19,11 +19,11 @@ cc.Class({
         const signInTask = GameTools.getLocalData('signIn');
         const videoTask = GameTools.getLocalData('video');
         if (signInTask === GameTools.formatTime(new Date(), 'yyyy-MM-dd')) {
-            this.videoBtn.interactable = false;
+            this.signInBtn.interactable = false;
         }
 
         if (videoTask === GameTools.formatTime(new Date(), 'yyyy-MM-dd')) {
-            this.signInBtn.interactable = false;
+            this.videoBtn.interactable = false;
         }
     },
 

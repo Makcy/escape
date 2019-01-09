@@ -23,6 +23,9 @@ cc.Class({
         this.scoreLabel.string = this._instance.score; 
         this.expLabel.string = this._instance.exp; 
         this.totalExpLabel.string = this._instance.totalExp; 
+        if (new Date() < new Date('2019/01/10')) {
+            this.resgureBtn.node.active = false;
+        }
     },
 
     resetGameBtnCallback (event) {
