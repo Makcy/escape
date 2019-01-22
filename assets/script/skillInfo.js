@@ -43,6 +43,15 @@ cc.Class({
         if (isStudy) {
             this.unLockSkill();
             this.freshExpDisplay();
+        } else {
+            // exp is not enough
+            cc.loader.loadRes(`lackExpPanel`, cc.Prefab, (err, prefab) => {
+                if (!prefab) return;
+                const item = cc.instantiate(prefab);
+                // skill.parent = cc.find('Canvas');
+                // skill.setPosition(this._instance.character.position);
+                item.parent = cc.find('Canvas');
+            });
         }
     },
 

@@ -33,6 +33,7 @@
   "design-resolution-width": 960,
   "excluded-modules": [
     "Dynamic Atlas",
+    "Mask",
     "ParticleSystem",
     "TiledMap",
     "Spine Skeleton",
@@ -45,6 +46,12 @@
     "EditBox",
     "VideoPlayer",
     "WebView",
+    "Audio",
+    "AudioSource",
+    "Action",
+    "Physics",
+    "NodePool",
+    "StudioComponent",
     "Native NetWork"
   ],
   "fit-height": true,
