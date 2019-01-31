@@ -12,7 +12,6 @@ cc.Class({
         studyBtn: cc.Button,
         equipBtn: cc.Button,
         unlockSprite: cc.Sprite,
-        btnDes: cc.Label,
         id: 0
     },
 
@@ -67,11 +66,9 @@ cc.Class({
 
     freshExpDisplay() {
        if (cc.director.getScene().name === 'skill') {
-           const expLabel = cc.find('Canvas/exp/value').getComponent(cc.Label);
+           const expLabel = cc.find('Canvas/value').getComponent(cc.Label);
            const expValue = GameTools.getLocalData('exp') || 0;
            expLabel.string = expValue;
        }
     }
-
-    // update (dt) {},
 });

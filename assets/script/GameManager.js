@@ -153,14 +153,14 @@ const GameManager = cc.Class({
     },
 
     resetGame () {
-        if (cc.director.isPaused && this.isGameOver) {
-            this.score = 0;
-            this.tempExp = 0;
-            this.cleanScreenNode();
-            this.isGameOver = false;
-            this.gameStart();
-            cc.director.resume();
-        }
+        // if (cc.director.isPaused && this.isGameOver) {
+        // }
+        this.score = 0;
+        this.tempExp = 0;
+        this.cleanScreenNode();
+        this.isGameOver = false;
+        this.gameStart();
+        cc.director.resume();
     },
 
     gameStart () {
@@ -188,9 +188,9 @@ const GameManager = cc.Class({
     },
 
     cleanScreenNode () {
+        this.cleanGameOverPanel();
         this.cleanJoyStick();
         this.cleanEnemyies();
-        this.cleanGameOverPanel();
         this.cleanCharacter();
     }
 });

@@ -10,13 +10,24 @@ module.exports = {
     {
       id: 1,
       title: '凤舞九天',
-      des: '传说为陆小凤独创，此招一出，天不得时，日月无光',
+      des: '陆小凤失传已久的独创绝招，此招一出，天不得时，日月无光',
       icon: 'skill_01',
       cd: 20,
       exp: 1000,
       type: 'Surround',
       range: 4,
       prefab: 'skill_1'
+    },
+    {
+      id: 2,
+      title: '落英神剑掌',
+      des: '桃花影落飞神剑，身法飘逸潇洒，黄老邪的独门绝学',
+      icon: 'skill_02',
+      cd: 2,
+      exp: 2000,
+      type: 'Shoot',
+      range: 4,
+      prefab: 'skill_2'
     }
   ],
 
@@ -26,5 +37,8 @@ module.exports = {
   },
 
   DailyTaskExp: 200,
-  SignInTaskExp: 50
+  SignInTaskExp: 50,
+  ShareTexts: [
+    '遵循血之盟约，汝听从吾之召唤',
+  ]
 }

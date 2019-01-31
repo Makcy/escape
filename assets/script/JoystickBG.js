@@ -23,7 +23,6 @@ cc.Class({
     _angle: {
       default: null,
       displayName: '当前触摸的角度',
-
     },
 
     _radian: {

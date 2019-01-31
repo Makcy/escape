@@ -1,9 +1,11 @@
+const GameConfig = require('GameConfig');
 module.exports = {
   shareMenu: (wx, data) => {
     wx.showShareMenu();
     wx.onShareAppMessage(() => {
+      
       return {
-        title: '遵循血之盟约，汝听从吾之召唤',
+        title: GameConfig.ShareTexts[0],
         imageUrl: data.url
       }
     });

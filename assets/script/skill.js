@@ -20,7 +20,7 @@ cc.Class({
             this.currentSkill = GameConfig.skills.find(s => s.id === currentSkillId);
         } else {
             //  TODO: mock data
-            this.currentSkill = GameConfig.skills.find(s => s.id === 1);
+            this.currentSkill = GameConfig.skills.find(s => s.id === 2);
         }
         this._instance = cc.find('Canvas/Main Camera').getComponent('GameManager');
         this.node.on('click', this.skillBtnCallback, this);
@@ -28,19 +28,24 @@ cc.Class({
 
     skillBtnCallback(event) {
         if (!this.isCd) {
-            this.releaseSkill(this.currentSkill.id);
+            this.releaseSkill(this.currentSkill);
             this.coldMask.getComponent(cc.Sprite).fillStart = 0;
             this.isCd = true; 
         }
     },
 
-    releaseSkill(skillId) {
-        cc.loader.loadRes(`skill/skill_${skillId}`, cc.Prefab, (err, prefab) => {
+    releaseSkill(currentSkill) {
+        cc.loader.loadRes(`skill/skill_${currentSkill.id}`, cc.Prefab, (err, prefab) => {
             if (!prefab) return;
             const skill = cc.instantiate(prefab);
-            // skill.parent = cc.find('Canvas');
-            // skill.setPosition(this._instance.character.position);
-            skill.parent = this._instance.character;
+            
+            // TODO: optimized deal read from config
+            if (currentSkill.type === 'Surround') {
+                skill.parent = this._instance.character;
+            } else {
+                skill.parent = cc.find('Canvas');
+                skill.setPosition(this._instance.character.position);
+            }
         });
     },
 
