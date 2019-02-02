@@ -5,7 +5,7 @@ module.exports = {
     wx.onShareAppMessage(() => {
       
       return {
-        title: GameConfig.ShareTexts[0],
+        title: GameConfig.ShareTexts[parseInt(Math.random() * GameConfig.ShareTexts.length,10)],
         imageUrl: data.url
       }
     });

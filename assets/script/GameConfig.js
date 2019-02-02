@@ -39,6 +39,7 @@ module.exports = {
   DailyTaskExp: 200,
   SignInTaskExp: 50,
   ShareTexts: [
-    '遵循血之盟约，汝听从吾之召唤',
+    '[微信红包]恭喜发财大吉大利',
+    '你有一个拜年红包，请查收'
   ]
 }
